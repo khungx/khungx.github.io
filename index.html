@@ -5,7 +5,6 @@
   <title>Para mi Negra - San Valentín</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
-    /* ... (Tus estilos base se mantienen) ... */
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
@@ -52,25 +51,28 @@
     /* HERO */
     .hero-title { font-size: clamp(2.5rem, 8vw, 4rem); text-align: center; }
     .hero-title span { background: linear-gradient(120deg, #ff4b7a, #ff9b4b); -webkit-background-clip: text; color: transparent; }
-    .hero-subtitle { text-align: center; opacity: 0.8; margin-top: 1rem; }
+    .hero-subtitle { text-align: center; opacity: 0.8; margin-top: 1rem; line-height: 1.6; }
 
     /* TIMELINE */
-    .section-title { color: #ff4b7a; margin-bottom: 2rem; border-left: 4px solid #ff9b4b; padding-left: 1rem; }
+    .section-title { color: #ff4b7a; margin-bottom: 2rem; border-left: 4px solid #ff9b4b; padding-left: 1rem; font-size: 1.8rem; }
     .timeline { border-left: 1px solid rgba(255,255,255,0.2); padding-left: 20px; }
-    .timeline-item { margin-bottom: 2rem; position: relative; }
+    .timeline-item { margin-bottom: 2.5rem; position: relative; }
     .timeline-item::before {
         content: '❤';
         position: absolute;
         left: -29px;
-        background: #000;
+        background: #0b050a;
         color: #ff4b7a;
         padding: 2px;
+        font-size: 0.8rem;
     }
+    .timeline-item strong { display: block; color: #ff9b4b; margin-bottom: 0.5rem; font-size: 1.1rem; }
+    .timeline-item p { opacity: 0.9; line-height: 1.5; font-size: 1rem; }
 
     /* SOBRE Y CARTA */
     .envelope-wrapper {
       position: relative;
-      height: 300px;
+      height: 350px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -88,24 +90,26 @@
       align-items: center;
       transition: 0.5s;
       z-index: 2;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
     }
 
-    .envelope:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(255, 75, 122, 0.4); }
+    .envelope:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(255, 75, 122, 0.5); }
 
     .letter {
       background: #fffafa;
       color: #2c2c2c;
-      padding: 2rem;
-      width: 90%;
-      max-width: 500px;
+      padding: 2.5rem;
+      width: 95%;
+      max-width: 550px;
       border-radius: 2px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-      display: none; /* Se activa con JS */
+      box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+      display: none;
       font-family: 'Georgia', serif;
       line-height: 1.8;
       transform: translateY(20px);
       opacity: 0;
       transition: 1s all ease;
+      text-align: left;
     }
 
     .letter.active {
@@ -114,18 +118,19 @@
       transform: translateY(0);
     }
 
-    .signature { margin-top: 2rem; text-align: right; color: #ff4b7a; font-weight: bold; }
+    .signature { margin-top: 2rem; text-align: right; color: #ff4b7a; font-weight: bold; font-size: 1.2rem; }
 
     /* BOTÓN */
     .back-btn {
         margin-top: 2rem;
-        padding: 0.8rem 1.5rem;
+        padding: 0.8rem 1.8rem;
         background: transparent;
         border: 1px solid #ff4b7a;
         color: #ff4b7a;
         cursor: pointer;
         border-radius: 50px;
         transition: 0.3s;
+        font-weight: 600;
     }
     .back-btn:hover { background: #ff4b7a; color: white; }
 
@@ -150,7 +155,7 @@
   <section id="inicio">
     <div class="section-inner reveal">
       <h1 class="hero-title">Para <span>ti</span>, mi negra</h1>
-      <p class="hero-subtitle">No sé cómo agradecerte todo lo que haces por mí.<br>Guarda estas palabras siempre contigo.</p>
+      <p class="hero-subtitle">No sé cómo agradecerte todo lo que haces por mí.<br>Quiero que guardes estas palabras para siempre.</p>
     </div>
   </section>
 
@@ -159,16 +164,16 @@
       <h2 class="section-title">Momentos en mi corazón</h2>
       <div class="timeline">
         <div class="timeline-item">
-          <strong>Nuestra primera vez...</strong>
-          <p>Ese día que entendí que eras diferente a todas.</p>
+          <strong>Tu mensaje de "buenos días"</strong>
+          <p>Parece algo simple, pero leerte apenas despierto es lo que le da sentido a mi rutina. Me cambias el ánimo sin siquiera intentarlo.</p>
         </div>
         <div class="timeline-item">
-          <strong>Tu risa</strong>
-          <p>Ese sonido que me arregla cualquier mal día, sin falta.</p>
+          <strong>Cuando te ríes de mis tonterías</strong>
+          <p>Ese sonido es mi refugio favorito. Saber que puedo hacerte feliz, aunque sea un ratito, es mi mayor logro y mi alegría más grande.</p>
         </div>
         <div class="timeline-item">
-          <strong>El ahora</strong>
-          <p>Agradecido por tenerte hoy a mi lado celebrando el amor.</p>
+          <strong>Tu apoyo incondicional</strong>
+          <p>En los días donde nada sale bien, tu mano es lo único que necesito para recordar que todo va a estar bien. Gracias por estar y por no soltarme.</p>
         </div>
       </div>
     </div>
@@ -181,14 +186,15 @@
       
       <div class="envelope-wrapper">
         <div id="envelope" class="envelope">
-          <span style="font-size: 2rem;">✉️</span>
+          <span style="font-size: 2.5rem;">✉️</span>
         </div>
 
         <div id="letter" class="letter">
           <p><strong>Mi negra hermosa,</strong></p>
-          <p>Hoy1  quierdecirte algo que llevo tiempo sintiendo, algo que a veces me cuesta expresar con palabras, pero que late en mí cada día.</p>
-          <p>Tú te has convertido en ese pensamiento que aparece sin avisar, en esa calma que llega incluso en mis días más pesados. Me descubrí queriendo ser mejor, queriendo cuidar lo que tenemos y queriendo quedarme para siempre.</p>
-          <p>Te pienso, te elijo y te amo cada día más.</p>
+          <p>Hoy quiero decirte algo que llevo tiempo sintiendo, algo que a veces me cuesta expresar con palabras, pero que late en mí cada día.</p>
+          <p>Tú te has convertido en ese pensamiento que aparece sin avisar, en esa calma que llega incluso en mis días más pesados, en ese brillo que no se apaga aunque el mundo esté oscuro.</p>
+          <p>No sé en qué momento exacto pasó, pero desde que llegaste, algo en mí cambió. Me descubrí sonriendo sin razón, recordando tus gestos, tus palabras y tu forma de mirar. Me descubrí queriendo ser mejor, queriendo cuidar lo que tenemos y queriendo quedarme para siempre.</p>
+          <p>Hoy quiero que lo sepas sin dudas: te pienso, te elijo y te amo cada día más.</p>
           <div class="signature">Con todo mi amor, Elias</div>
         </div>
       </div>
@@ -199,15 +205,21 @@
 </main>
 
 <script>
-  // Revelar al hacer scroll
+  // Revelar secciones al hacer scroll
   const reveals = document.querySelectorAll(".reveal");
-  window.addEventListener("scroll", () => {
+  function scrollReveal() {
     reveals.forEach(r => {
-      if(r.getBoundingClientRect().top < window.innerHeight * 0.85) r.classList.add("visible");
+      const windowHeight = window.innerHeight;
+      const elementTop = r.getBoundingClientRect().top;
+      if(elementTop < windowHeight * 0.85) {
+        r.classList.add("visible");
+      }
     });
-  });
+  }
+  window.addEventListener("scroll", scrollReveal);
+  window.addEventListener("load", scrollReveal);
 
-  // Lógica del sobre
+  // Lógica para abrir el sobre
   const env = document.getElementById('envelope');
   const lettr = document.getElementById('letter');
   const btn = document.getElementById('backBtn');
@@ -218,11 +230,11 @@
     btn.style.display = 'inline-block';
   });
 
+  // Botón para subir suavemente
   btn.addEventListener('click', () => {
     window.scrollTo({top: 0, behavior: 'smooth'});
   });
 </script>
 
 </body>
-
 </html>
