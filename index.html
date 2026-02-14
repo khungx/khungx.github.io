@@ -48,6 +48,24 @@
 
     .section-inner { max-width: 800px; width: 100%; }
 
+    /* CONTADOR */
+    .counter-container {
+      text-align: center;
+      margin-top: 2rem;
+      background: rgba(255, 75, 122, 0.1);
+      padding: 1.5rem;
+      border-radius: 15px;
+      border: 1px solid rgba(255, 75, 122, 0.3);
+    }
+    .counter-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 1rem;
+    }
+    .counter-item span { display: block; font-size: 1.5rem; font-weight: bold; color: #ff9b4b; }
+    .counter-item small { font-size: 0.7rem; text-transform: uppercase; opacity: 0.7; }
+
     /* HERO */
     .hero-title { font-size: clamp(2.5rem, 8vw, 4rem); text-align: center; }
     .hero-title span { background: linear-gradient(120deg, #ff4b7a, #ff9b4b); -webkit-background-clip: text; color: transparent; }
@@ -72,7 +90,7 @@
     /* SOBRE Y CARTA */
     .envelope-wrapper {
       position: relative;
-      height: 350px;
+      height: 400px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -112,15 +130,9 @@
       text-align: left;
     }
 
-    .letter.active {
-      display: block;
-      opacity: 1;
-      transform: translateY(0);
-    }
-
+    .letter.active { display: block; opacity: 1; transform: translateY(0); }
     .signature { margin-top: 2rem; text-align: right; color: #ff4b7a; font-weight: bold; font-size: 1.2rem; }
 
-    /* BOTÓN */
     .back-btn {
         margin-top: 2rem;
         padding: 0.8rem 1.8rem;
@@ -140,6 +152,10 @@
 </head>
 <body>
 
+<audio id="musica" loop>
+  <source src="TU_URL_DE_MUSICA_AQUI" type="audio/mpeg">
+</audio>
+
 <header>
   <div class="logo">E ❤️ I</div>
   <nav>
@@ -155,7 +171,17 @@
   <section id="inicio">
     <div class="section-inner reveal">
       <h1 class="hero-title">Para <span>ti</span>, mi negra</h1>
-      <p class="hero-subtitle">No sé cómo agradecerte todo lo que haces por mí.<br>Quiero que guardes estas palabras para siempre.</p>
+      <p class="hero-subtitle">No sé cómo agradecerte todo lo que haces por mí.</p>
+      
+      <div class="counter-container">
+        <p>Tiempo compartiendo nuestra historia:</p>
+        <div id="timer" class="counter-grid">
+          <div class="counter-item"><span id="days">0</span><small>Días</small></div>
+          <div class="counter-item"><span id="hours">0</span><small>Horas</small></div>
+          <div class="counter-item"><span id="minutes">0</span><small>Min</small></div>
+          <div class="counter-item"><span id="seconds">0</span><small>Seg</small></div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -165,15 +191,15 @@
       <div class="timeline">
         <div class="timeline-item">
           <strong>Tu mensaje de "buenos días"</strong>
-          <p>Parece algo simple, pero leerte apenas despierto es lo que le da sentido a mi rutina. Me cambias el ánimo sin siquiera intentarlo.</p>
+          <p>Parece algo simple, pero leerte apenas despierto es lo que le da sentido a mi rutina.</p>
         </div>
         <div class="timeline-item">
           <strong>Cuando te ríes de mis tonterías</strong>
-          <p>Ese sonido es mi refugio favorito. Saber que puedo hacerte feliz, aunque sea un ratito, es mi mayor logro y mi alegría más grande.</p>
+          <p>Ese sonido es mi refugio favorito. Saber que puedo hacerte feliz es mi alegría más grande.</p>
         </div>
         <div class="timeline-item">
           <strong>Tu apoyo incondicional</strong>
-          <p>En los días donde nada sale bien, tu mano es lo único que necesito para recordar que todo va a estar bien. Gracias por estar y por no soltarme.</p>
+          <p>En los días donde nada sale bien, tu mano es lo único que necesito para recordar que todo va a estar bien.</p>
         </div>
       </div>
     </div>
@@ -182,7 +208,7 @@
   <section id="mensaje">
     <div class="section-inner reveal" style="text-align: center;">
       <h2 class="section-title" style="text-align: left;">Lo que quiero decirte</h2>
-      <p style="margin-bottom: 2rem; opacity: 0.7;">(Haz clic en el sobre para abrirlo)</p>
+      <p style="margin-bottom: 2rem; opacity: 0.7;">(Toca el sobre para abrirlo)</p>
       
       <div class="envelope-wrapper">
         <div id="envelope" class="envelope">
@@ -192,9 +218,8 @@
         <div id="letter" class="letter">
           <p><strong>Mi negra hermosa,</strong></p>
           <p>Hoy quiero decirte algo que llevo tiempo sintiendo, algo que a veces me cuesta expresar con palabras, pero que late en mí cada día.</p>
-          <p>Tú te has convertido en ese pensamiento que aparece sin avisar, en esa calma que llega incluso en mis días más pesados, en ese brillo que no se apaga aunque el mundo esté oscuro.</p>
-          <p>No sé en qué momento exacto pasó, pero desde que llegaste, algo en mí cambió. Me descubrí sonriendo sin razón, recordando tus gestos, tus palabras y tu forma de mirar. Me descubrí queriendo ser mejor, queriendo cuidar lo que tenemos y queriendo quedarme para siempre.</p>
-          <p>Hoy quiero que lo sepas sin dudas: te pienso, te elijo y te amo cada día más.</p>
+          <p>Tú te has convertido en ese pensamiento que aparece sin avisar, en esa calma que llega incluso en mis días más pesados.</p>
+          <p>No sé en qué momento exacto pasó, pero desde que llegaste, algo en mí cambió. Te pienso, te elijo y te amo cada día más.</p>
           <div class="signature">Con todo mi amor, Elias</div>
         </div>
       </div>
@@ -205,27 +230,47 @@
 </main>
 
 <script>
+  // CONFIGURA TU FECHA AQUÍ (Año, Mes - 1, Día) 
+  // Ejemplo: 14 de Febrero de 2024 -> (2024, 1, 14)
+  const fechaInicio = new Date(2024, 1, 14); 
+
+  function actualizarContador() {
+    const ahora = new Date();
+    const diferencia = ahora - fechaInicio;
+
+    const d = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+    const h = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const m = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+    const s = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+    document.getElementById('days').innerText = d;
+    document.getElementById('hours').innerText = h;
+    document.getElementById('minutes').innerText = m;
+    document.getElementById('seconds').innerText = s;
+  }
+  setInterval(actualizarContador, 1000);
+
+  // Revelar al hacer scroll
   const reveals = document.querySelectorAll(".reveal");
   function scrollReveal() {
     reveals.forEach(r => {
-      const windowHeight = window.innerHeight;
-      const elementTop = r.getBoundingClientRect().top;
-      if(elementTop < windowHeight * 0.85) {
-        r.classList.add("visible");
-      }
+      if(r.getBoundingClientRect().top < window.innerHeight * 0.85) r.classList.add("visible");
     });
   }
   window.addEventListener("scroll", scrollReveal);
   window.addEventListener("load", scrollReveal);
 
+  // Abrir sobre y sonar música
   const env = document.getElementById('envelope');
   const lettr = document.getElementById('letter');
   const btn = document.getElementById('backBtn');
+  const musica = document.getElementById('musica');
 
   env.addEventListener('click', () => {
     env.style.display = 'none';
     lettr.classList.add('active');
     btn.style.display = 'inline-block';
+    musica.play().catch(e => console.log("La música necesita un link válido"));
   });
 
   btn.addEventListener('click', () => {
