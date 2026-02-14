@@ -30,7 +30,7 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      font-size: 0.9rem;
+      font-size: 1.1rem;
       color: #ff4b7a;
     }
 
@@ -141,7 +141,7 @@
 <body>
 
 <header>
-  <div class="logo">E & ❤️</div>
+  <div class="logo">E ❤️ I</div>
   <nav>
     <ul>
       <li><a href="#inicio">Inicio</a></li>
@@ -205,7 +205,6 @@
 </main>
 
 <script>
-  // Revelar secciones al hacer scroll
   const reveals = document.querySelectorAll(".reveal");
   function scrollReveal() {
     reveals.forEach(r => {
@@ -219,7 +218,6 @@
   window.addEventListener("scroll", scrollReveal);
   window.addEventListener("load", scrollReveal);
 
-  // Lógica para abrir el sobre
   const env = document.getElementById('envelope');
   const lettr = document.getElementById('letter');
   const btn = document.getElementById('backBtn');
@@ -230,7 +228,6 @@
     btn.style.display = 'inline-block';
   });
 
-  // Botón para subir suavemente
   btn.addEventListener('click', () => {
     window.scrollTo({top: 0, behavior: 'smooth'});
   });
