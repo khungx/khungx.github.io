@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title> Para mi negrita - I ❤️ E</title>
+  <title>Para mi Negra - E ❤️ I</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -48,12 +48,10 @@
 
     .section-inner { max-width: 800px; width: 100%; }
 
-    /* HERO */
     .hero-title { font-size: clamp(2.2rem, 8vw, 4rem); text-align: center; }
     .hero-title span { background: linear-gradient(120deg, #ff4b7a, #ff9b4b); -webkit-background-clip: text; color: transparent; }
     .hero-subtitle { text-align: center; opacity: 0.8; margin-top: 1rem; line-height: 1.6; }
 
-    /* MOMENTOS */
     .section-title { color: #ff4b7a; margin-bottom: 2rem; border-left: 4px solid #ff9b4b; padding-left: 1rem; font-size: 1.8rem; }
     .timeline { border-left: 1px solid rgba(255,255,255,0.2); padding-left: 20px; }
     .timeline-item { margin-bottom: 2.5rem; position: relative; }
@@ -65,7 +63,6 @@
     }
     .timeline-item strong { display: block; color: #ff9b4b; margin-bottom: 0.5rem; font-size: 1.1rem; }
 
-    /* TIEMPO JUNTOS */
     .time-section {
       text-align: center;
       background: rgba(255, 75, 122, 0.05);
@@ -90,7 +87,6 @@
     .counter-item span { display: block; font-size: 1.8rem; font-weight: bold; color: #ff9b4b; }
     .counter-item small { font-size: 0.7rem; text-transform: uppercase; opacity: 0.7; }
 
-    /* CARTA */
     .envelope-wrapper {
       position: relative;
       height: 380px;
@@ -125,7 +121,7 @@
         font-weight: 600; display: none;
     }
 
-    #yt-audio { display: none; }
+    #yt-audio { position: absolute; width: 0; height: 0; border: 0; pointer-events: none; }
 
     .reveal { opacity: 0; transform: translateY(30px); transition: 1s; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -134,7 +130,7 @@
 <body>
 
 <iframe id="player" width="0" height="0" 
-  src="https://www.youtube.com/embed/-qvYXZOUImo?enablejsapi=1" 
+  src="https://www.youtube.com/embed/-qvYXZOUImo?enablejsapi=1&autoplay=1&mute=0" 
   frameborder="0" allow="autoplay">
 </iframe>
 
@@ -153,7 +149,7 @@
   <section id="inicio">
     <div class="section-inner reveal">
       <h1 class="hero-title">Para <span>ti</span>, mi negra</h1>
-      <p class="hero-subtitle">Un pequeño lugar en el internet solo para nosotros.</p>
+      <p class="hero-subtitle">Un pequeño rincón secreto para nosotros.</p>
     </div>
   </section>
 
@@ -217,6 +213,7 @@
 </main>
 
 <script>
+  // FECHA DE INICIO: 11 de Julio de 2025
   const fechaInicio = new Date(2025, 6, 11); 
 
   function actualizarContador() {
@@ -249,13 +246,15 @@
   const btn = document.getElementById('backBtn');
   const player = document.getElementById('player');
 
+  // Forzar reproducción al interactuar (por si el navegador bloquea el autoplay)
+  document.body.addEventListener('click', function() {
+      player.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+  }, { once: true });
+
   env.addEventListener('click', () => {
     env.style.display = 'none';
     lettr.classList.add('active');
     btn.style.display = 'inline-block';
-    
-    let symbol = player.src.indexOf("?") > -1 ? "&" : "?";
-    player.src += symbol + "autoplay=1";
   });
 
   btn.addEventListener('click', () => {
@@ -265,5 +264,3 @@
 
 </body>
 </html>
-
-
