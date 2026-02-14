@@ -37,6 +37,7 @@
     .logo { font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #ff4b7a; }
     nav ul { display: flex; gap: 1.5rem; list-style: none; font-size: 0.8rem; }
     nav a { color: inherit; text-decoration: none; transition: 0.3s; }
+    nav a:hover { color: #ff9b4b; }
 
     section {
       min-height: 100vh;
@@ -53,6 +54,16 @@
     
     .section-title { color: #ff4b7a; margin-bottom: 2rem; border-left: 4px solid #ff9b4b; padding-left: 1rem; font-size: 1.8rem; }
     
+    .timeline { border-left: 1px solid rgba(255,255,255,0.2); padding-left: 20px; }
+    .timeline-item { margin-bottom: 2.5rem; position: relative; }
+    .timeline-item::before {
+        content: '❤';
+        position: absolute; left: -29px;
+        background: #0b050a; color: #ff4b7a;
+        padding: 2px; font-size: 0.8rem;
+    }
+    .timeline-item strong { display: block; color: #ff9b4b; margin-bottom: 0.5rem; font-size: 1.1rem; }
+
     .time-section {
       text-align: center;
       background: rgba(255, 75, 122, 0.05);
@@ -67,7 +78,7 @@
     .counter-item { background: rgba(0,0,0,0.5); padding: 1.2rem; border-radius: 12px; border-bottom: 3px solid #ff4b7a; }
     .counter-item span { display: block; font-size: 1.8rem; font-weight: bold; color: #ff9b4b; }
 
-    .envelope-wrapper { min-height: 400px; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+    .envelope-wrapper { min-height: 450px; display: flex; flex-direction: column; justify-content: center; align-items: center; }
     
     .envelope {
       width: 260px; height: 170px;
@@ -94,12 +105,13 @@
       border-radius: 20px; cursor: pointer; font-weight: bold;
       transition: 0.3s;
     }
+    .deseo-btn:hover { background: #ff9b4b; transform: scale(1.05); }
 
     .beso-frase { margin-top: 2rem; font-style: italic; color: #ff4b7a; font-weight: bold; text-align: center; border-top: 1px dashed #ccc; padding-top: 1rem; }
     .signature { margin-top: 1rem; text-align: right; color: #ff4b7a; font-weight: bold; }
 
     .footer-note {
-      margin-top: 4rem; padding: 1rem;
+      margin-top: 3rem; padding: 1rem;
       background: rgba(255, 255, 255, 0.1);
       border-radius: 10px; font-size: 0.9rem;
       text-align: center; opacity: 0.8;
@@ -142,14 +154,28 @@
   <section id="momentos">
     <div class="section-inner reveal">
       <h2 class="section-title">Detalles que me encantan de vos</h2>
-      <p>Tus ojitos, tu sonrisa, tu personalidad y tu voz. Me encanta tu hermoso corazón y cómo amás a los niños. Sos increíble.</p>
+      <div class="timeline">
+        <div class="timeline-item">
+          <strong>Tu mensaje de "buenos días"</strong>
+          <p>Aunque a veces yo sea el que los dé primero jaja, aún así cambia mi rutina saber que hay alguien que se acuerda de mí todos los días. Es algo increíble.</p>
+        </div>
+        <div class="timeline-item">
+          <strong>Cuando te ríes de mis tonterías</strong>
+          <p>Aunque a veces ni dan risa jaja, te esfuerzas por hacerme feliz. ¡Te amooo!</p>
+        </div>
+        <div class="timeline-item">
+          <strong>Tus ojitos, tu sonrisa, tu personalidad y tu voz</strong>
+          <p>Me encantan todos tus detalles (¡hasta los eructos! jaja). Pero lo que más me fascina es tu hermoso corazón, el amor que le ponés a todo lo que hacés y cómo amás a los niños. Definitivamente quiero que seas la madre de mis hijos.</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <section id="tiempo">
     <div class="section-inner reveal">
       <div class="time-section">
-        <h2 class="section-title" style="border:none; text-align:center;">Nuestro Tiempo Juntos</h2>
+        <h2 class="section-title" style="border:none; text-align:center; padding:0;">Nuestro Tiempo Juntos</h2>
+        <p style="opacity:0.8; margin-bottom: 10px;">Desde el 11 de julio de 2025</p>
         <div id="timer" class="counter-grid">
           <div class="counter-item"><span id="days">0</span><small>Días</small></div>
           <div class="counter-item"><span id="hours">0</span><small>Horas</small></div>
@@ -163,14 +189,16 @@
   <section id="mensaje">
     <div class="section-inner reveal" style="text-align: center;">
       <h2 class="section-title" style="text-align: left;">Una carta para ti</h2>
+      <p style="margin-bottom: 2rem; opacity: 0.7;">(Toca el sobre para abrirlo)</p>
       
       <div class="envelope-wrapper">
         <div id="envelope" class="envelope"><span style="font-size: 2.5rem;">✉️</span></div>
 
         <div id="letter" class="letter">
           <p><strong>Mi negrita hermosa,</strong></p>
-          <p>Te has convertido en mi zona de confort y mi canción favorita. Me has ganado el respeto y el corazón.</p>
-          <p>Espero podamos seguir compartiendo muchos años juntos, te amooo.</p>
+          <p>Creo que estas palabras no son suficientes para describir todo lo que siento por vos. Ni esta carta ni nada podrá pagar todo lo que has hecho por mí.</p>
+          <p>Te has convertido en mi zona de confort, mi canción favorita; incluso en mis días más pesados, te encargás de arreglarlos con tan solo una llamadita.</p>
+          <p>Sin duda te has convertido en una mujer que se ha ganado mi respeto y mi corazón. Te amo mi niña, espero podamos seguir compartiendo muchos años juntos, te amooo.</p>
           <p>Te pienso, te elijo y te amo cada día más.</p>
           
           <p class="beso-frase">¿Y mi beso? jajajaja</p>
@@ -180,14 +208,14 @@
         </div>
 
         <div class="footer-note">Tu rincón secreto para cuando quieras sentirme cerca. ❤️</div>
-        <button id="backBtn" class="back-btn">Volver arriba</button>
+        <button id="backBtn" class="back-btn" onclick="volverArriba()">Volver arriba ❤️</button>
       </div>
     </div>
   </section>
 </main>
 
 <script>
-  // ESTRELLAS
+  // --- ESTRELLAS ---
   const canvas = document.getElementById('starCanvas');
   const ctx = canvas.getContext('2d');
   let stars = [];
@@ -212,43 +240,47 @@
   }
   drawStars();
 
-  // FUNCIONES NUEVAS
+  // --- PEDIR DESEO (ESTRELLAS FUGACES) ---
   function pedirDeseo() {
-    speedMultiplier = 20; // Estrellas fugaces
+    speedMultiplier = 20; 
     setTimeout(() => { 
       speedMultiplier = 1; 
       alert("Deseo enviado al universo. (PD: Mi deseo ya se cumplió porque estás conmigo) ✨");
     }, 1500);
   }
 
-  // ABRIR SOBRE Y MODO LECTURA
+  // --- ABRIR SOBRE Y MODO LECTURA ---
   const env = document.getElementById('envelope');
   const lettr = document.getElementById('letter');
+  const backBtn = document.getElementById('backBtn');
+
   env.addEventListener('click', () => {
     env.style.display = 'none';
     lettr.classList.add('active');
-    document.body.style.background = "#020104"; // Oscurecer para leer
-    document.getElementById('backBtn').style.display = 'inline-block';
+    document.body.style.background = "#020104"; 
+    backBtn.style.display = 'inline-block';
   });
 
-  // CONTADOR
+  function volverArriba() { window.scrollTo({top: 0, behavior: 'smooth'}); }
+
+  // --- CONTADOR ---
   const fechaInicio = new Date(2025, 6, 11); 
   function actualizar() {
     const diff = new Date() - fechaInicio;
     document.getElementById('days').innerText = Math.floor(diff/(1000*60*60*24));
-    document.getElementById('hours').innerText = Math.floor((diff/(1000*60*60))%24);
-    document.getElementById('minutes').innerText = Math.floor((diff/(1000*60))%60);
+    document.getElementById('hours').innerText = Math.floor((diff/(1000*60*60*24))%24);
+    document.getElementById('minutes').innerText = Math.floor((diff/(1000*60*60))%60);
     document.getElementById('seconds').innerText = Math.floor((diff/1000)%60);
   }
   setInterval(actualizar, 1000); actualizar();
 
-  // REVELADO
+  // --- REVELADO SCROLL ---
   const reveals = document.querySelectorAll(".reveal");
   window.addEventListener("scroll", () => {
     reveals.forEach(r => { if(r.getBoundingClientRect().top < window.innerHeight*0.85) r.classList.add("visible"); });
   });
 
-  // MUSICA
+  // --- MUSICA ---
   document.body.addEventListener('click', () => {
     document.getElementById('player').contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
   }, { once: true });
