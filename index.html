@@ -15,6 +15,17 @@
       scroll-behavior: smooth;
     }
 
+    /* Fondo de estrellas */
+    #starCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1; /* Detrás de todo */
+      pointer-events: none;
+    }
+
     header {
       position: fixed;
       top: 0;
@@ -44,9 +55,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      position: relative;
     }
 
-    .section-inner { max-width: 800px; width: 100%; }
+    .section-inner { max-width: 800px; width: 100%; z-index: 1; }
 
     .hero-title { font-size: clamp(2.2rem, 8vw, 4rem); text-align: center; }
     .hero-title span { background: linear-gradient(120deg, #ff4b7a, #ff9b4b); -webkit-background-clip: text; color: transparent; }
@@ -79,7 +91,7 @@
     @media (min-width: 600px) { .counter-grid { grid-template-columns: repeat(4, 1fr); } }
     
     .counter-item {
-      background: rgba(0,0,0,0.3);
+      background: rgba(0,0,0,0.5);
       padding: 1.2rem;
       border-radius: 12px;
       border-bottom: 3px solid #ff4b7a;
@@ -118,7 +130,7 @@
       font-style: italic;
       color: #ff4b7a;
       font-weight: bold;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       text-align: center;
       border-top: 1px dashed rgba(255, 75, 122, 0.3);
       padding-top: 1rem;
@@ -138,6 +150,8 @@
   </style>
 </head>
 <body>
+
+<canvas id="starCanvas"></canvas>
 
 <iframe id="player" width="0" height="0" 
   src="https://www.youtube.com/embed/-qvYXZOUImo?enablejsapi=1&autoplay=1&mute=0" 
@@ -215,7 +229,7 @@
           <p>Sin duda te has convertido en una mujer que se ha ganado mi respeto y mi corazón. Te amo mi niña, espero podamos seguir compartiendo muchos años juntos, te amooo.</p>
           <p>Te pienso, te elijo y te amo cada día más.</p>
           
-          <p class=>¿Y mi beso? jajajaja</p>
+          <p class="beso-frase">¿Y mi beso? jajajaja</p>
           
           <div class="signature">Con todo mi amor, Elias</div>
         </div>
@@ -227,24 +241,56 @@
 </main>
 
 <script>
+  // --- Lógica de Estrellas ---
+  const canvas = document.getElementById('starCanvas');
+  const ctx = canvas.getContext('2d');
+  let stars = [];
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  for(let i=0; i<150; i++) {
+    stars.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      size: Math.random() * 1.5,
+      speed: Math.random() * 0.5
+    });
+  }
+
+  function drawStars() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "white";
+    stars.forEach(s => {
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.size, 0, Math.PI*2);
+      ctx.fill();
+      s.y += s.speed;
+      if(s.y > canvas.height) s.y = 0;
+    });
+    requestAnimationFrame(drawStars);
+  }
+  drawStars();
+
+  // --- Lógica del Contador ---
   const fechaInicio = new Date(2025, 6, 11); 
 
   function actualizarContador() {
     const ahora = new Date();
     const diferencia = ahora - fechaInicio;
-    const d = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-    const h = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const m = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
-    const s = Math.floor((diferencia % (1000 * 60)) / 1000);
-
-    document.getElementById('days').innerText = d;
-    document.getElementById('hours').innerText = h;
-    document.getElementById('minutes').innerText = m;
-    document.getElementById('seconds').innerText = s;
+    document.getElementById('days').innerText = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+    document.getElementById('hours').innerText = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    document.getElementById('minutes').innerText = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+    document.getElementById('seconds').innerText = Math.floor((diferencia % (1000 * 60)) / 1000);
   }
   setInterval(actualizarContador, 1000);
   actualizarContador();
 
+  // --- Lógica de Revelado ---
   const reveals = document.querySelectorAll(".reveal");
   function scrollReveal() {
     reveals.forEach(r => {
@@ -254,16 +300,13 @@
   window.addEventListener("scroll", scrollReveal);
   window.addEventListener("load", scrollReveal);
 
+  // --- Lógica de Sobre y Carta ---
   const env = document.getElementById('envelope');
   const lettr = document.getElementById('letter');
   const btn = document.getElementById('backBtn');
   const player = document.getElementById('player');
 
   document.body.addEventListener('click', function() {
-      player.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
-  }, { once: true });
-  
-  window.addEventListener('scroll', function() {
       player.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
   }, { once: true });
 
@@ -280,5 +323,3 @@
 
 </body>
 </html>
-
-
