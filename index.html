@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Para mi Negra - E ❤️ I</title>
+  <title>Para mi Negra - I / E</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -135,7 +135,7 @@
 </iframe>
 
 <header>
-  <div class="logo">E ❤️ I</div>
+  <div class="logo">I ❤️ E</div>
   <nav>
     <ul>
       <li><a href="#inicio">Inicio</a></li>
@@ -246,8 +246,13 @@
   const btn = document.getElementById('backBtn');
   const player = document.getElementById('player');
 
-  // Forzar reproducción al interactuar (por si el navegador bloquea el autoplay)
+  // Forzar reproducción al interactuar (por si el navegador bloquea el autoplay inicial)
   document.body.addEventListener('click', function() {
+      player.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+  }, { once: true });
+  
+  // También intentar activar al hacer scroll por primera vez
+  window.addEventListener('scroll', function() {
       player.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
   }, { once: true });
 
