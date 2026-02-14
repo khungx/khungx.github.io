@@ -148,27 +148,26 @@
 <main>
   <section id="inicio">
     <div class="section-inner reveal">
-      <h1 class="hero-title">Para<span> ti</span>, Mi nina hermosa,Te amo </h1>
+      <h1 class="hero-title">Para<span> ti</span>, mi niña hermosa, te amo.</h1>
       <p class="hero-subtitle">Un pequeño rincón secreto para nosotros.</p>
     </div>
   </section>
 
   <section id="momentos">
     <div class="section-inner reveal">
-      <h2 class="section-title">Detalles que me encantan de vos </h2>
+      <h2 class="section-title">Detalles que me encantan de vos</h2>
       <div class="timeline">
         <div class="timeline-item">
           <strong>Tu mensaje de "buenos días"</strong>
-          <p>Aun que a veces yo soy el que los doy primero jaja, aun asi que cambia mi rutina, saber que hay alguien que se acuerda de mi todos los dias, es algo increible</p>
+          <p>Aunque a veces yo sea el que los dé primero jaja, aún así cambia mi rutina saber que hay alguien que se acuerda de mí todos los días. Es algo increíble.</p>
         </div>
         <div class="timeline-item">
           <strong>Cuando te ríes de mis tonterías</strong>
-          <p>Aun que a veces ni dan risa jaja, pero te esfuerzas por hacerme feliz, Teamooo.</p>
+          <p>Aunque a veces ni dan risa jaja, te esfuerzas por hacerme feliz. ¡Te amooo!</p>
         </div>
         <div class="timeline-item">
-          <strong>tus ojitos, tu sonrisa, tu pelo, tu personalidad,tu vos, tus eroctos, jaja </strong>
-          <p>pero un detalle que me encanta de vos es tu hermoso corazon, el amor que le pones cuando ayudas alas personas y con el amor qur haces las cosas y como amas a los niños, definitimamente quiero que seas la madre de mi hijos <p>
-         
+          <strong>Tus ojitos, tu sonrisa, tu personalidad y tu voz</strong>
+          <p>Me encantan todos tus detalles (¡hasta los eructos! jaja). Pero lo que más me fascina es tu hermoso corazón, el amor que le ponés a todo lo que hacés y cómo amás a los niños. Definitivamente quiero que seas la madre de mis hijos.</p>
         </div>
       </div>
     </div>
@@ -201,9 +200,8 @@
 
         <div id="letter" class="letter">
           <p><strong>Mi negrita hermosa,</strong></p>
-          <p>Creo que estas palabras no son suficientes para describir todo lo que siento por vos,ni esta carta ni nada podra pagar todo lo que has hecho por mi.</p>
-          <p>Te has conertido mi zona de confort, mi cancion favotira,y que incluso en mis dias mas pesados, te encargas de arreglarlos con tan solo una llamadita </p>
-         
+          <p>Creo que estas palabras no son suficientes para describir todo lo que siento por vos. Ni esta carta ni nada podrá pagar todo lo que has hecho por mí.</p>
+          <p>Te has convertido en mi zona de confort, mi canción favorita; incluso en mis días más pesados, te encargás de arreglarlos con tan solo una llamadita.</p>
           <p>Te pienso, te elijo y te amo cada día más.</p>
           <div class="signature">Con todo mi amor, Elias</div>
         </div>
@@ -215,7 +213,6 @@
 </main>
 
 <script>
-  // FECHA DE INICIO: 11 de Julio de 2025
   const fechaInicio = new Date(2025, 6, 11); 
 
   function actualizarContador() {
@@ -248,12 +245,10 @@
   const btn = document.getElementById('backBtn');
   const player = document.getElementById('player');
 
-  // Forzar reproducción al interactuar (por si el navegador bloquea el autoplay inicial)
   document.body.addEventListener('click', function() {
       player.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
   }, { once: true });
   
-  // También intentar activar al hacer scroll por primera vez
   window.addEventListener('scroll', function() {
       player.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
   }, { once: true });
@@ -271,7 +266,3 @@
 
 </body>
 </html>
-
-
-
-
