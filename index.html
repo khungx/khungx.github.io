@@ -22,7 +22,7 @@
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.85), rgba(0,0,0,0));
+      background: linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,0));
       z-index: 100;
     }
 
@@ -48,24 +48,6 @@
 
     .section-inner { max-width: 800px; width: 100%; }
 
-    /* CONTADOR */
-    .counter-container {
-      text-align: center;
-      margin-top: 2rem;
-      background: rgba(255, 75, 122, 0.1);
-      padding: 1.5rem;
-      border-radius: 15px;
-      border: 1px solid rgba(255, 75, 122, 0.3);
-    }
-    .counter-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      margin-top: 1rem;
-    }
-    .counter-item span { display: block; font-size: 1.5rem; font-weight: bold; color: #ff9b4b; }
-    .counter-item small { font-size: 0.7rem; text-transform: uppercase; opacity: 0.7; }
-
     /* HERO */
     .hero-title { font-size: clamp(2.5rem, 8vw, 4rem); text-align: center; }
     .hero-title span { background: linear-gradient(120deg, #ff4b7a, #ff9b4b); -webkit-background-clip: text; color: transparent; }
@@ -77,15 +59,36 @@
     .timeline-item { margin-bottom: 2.5rem; position: relative; }
     .timeline-item::before {
         content: '❤';
-        position: absolute;
-        left: -29px;
-        background: #0b050a;
-        color: #ff4b7a;
-        padding: 2px;
-        font-size: 0.8rem;
+        position: absolute; left: -29px;
+        background: #0b050a; color: #ff4b7a;
+        padding: 2px; font-size: 0.8rem;
     }
     .timeline-item strong { display: block; color: #ff9b4b; margin-bottom: 0.5rem; font-size: 1.1rem; }
-    .timeline-item p { opacity: 0.9; line-height: 1.5; font-size: 1rem; }
+
+    /* NUEVA SECCIÓN: NUESTRO TIEMPO JUNTOS */
+    .time-section {
+      text-align: center;
+      background: rgba(255, 75, 122, 0.05);
+      padding: 3rem 1.5rem;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 75, 122, 0.2);
+    }
+    .counter-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 2rem;
+    }
+    @media (min-width: 600px) { .counter-grid { grid-template-columns: repeat(4, 1fr); } }
+    
+    .counter-item {
+      background: rgba(0,0,0,0.3);
+      padding: 1.5rem;
+      border-radius: 12px;
+      border-bottom: 3px solid #ff4b7a;
+    }
+    .counter-item span { display: block; font-size: 2rem; font-weight: bold; color: #ff9b4b; }
+    .counter-item small { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.7; }
 
     /* SOBRE Y CARTA */
     .envelope-wrapper {
@@ -95,56 +98,32 @@
       justify-content: center;
       align-items: center;
     }
-
     .envelope {
-      width: 280px;
-      height: 180px;
-      background: #4a0e1e;
-      border: 2px solid #ff4b7a;
-      border-radius: 5px;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: 0.5s;
-      z-index: 2;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+      width: 280px; height: 180px;
+      background: #4a0e1e; border: 2px solid #ff4b7a;
+      border-radius: 5px; cursor: pointer;
+      display: flex; justify-content: center; align-items: center;
+      transition: 0.5s; z-index: 2;
     }
-
     .envelope:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(255, 75, 122, 0.5); }
 
     .letter {
-      background: #fffafa;
-      color: #2c2c2c;
-      padding: 2.5rem;
-      width: 95%;
-      max-width: 550px;
-      border-radius: 2px;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.8);
-      display: none;
-      font-family: 'Georgia', serif;
-      line-height: 1.8;
-      transform: translateY(20px);
-      opacity: 0;
-      transition: 1s all ease;
-      text-align: left;
+      background: #fffafa; color: #2c2c2c;
+      padding: 2.5rem; width: 95%; max-width: 550px;
+      border-radius: 2px; box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+      display: none; font-family: 'Georgia', serif;
+      line-height: 1.8; transform: translateY(20px);
+      opacity: 0; transition: 1s all ease;
     }
-
     .letter.active { display: block; opacity: 1; transform: translateY(0); }
     .signature { margin-top: 2rem; text-align: right; color: #ff4b7a; font-weight: bold; font-size: 1.2rem; }
 
     .back-btn {
-        margin-top: 2rem;
-        padding: 0.8rem 1.8rem;
-        background: transparent;
-        border: 1px solid #ff4b7a;
-        color: #ff4b7a;
-        cursor: pointer;
-        border-radius: 50px;
-        transition: 0.3s;
+        margin-top: 2rem; padding: 0.8rem 1.8rem;
+        background: transparent; border: 1px solid #ff4b7a;
+        color: #ff4b7a; cursor: pointer; border-radius: 50px;
         font-weight: 600;
     }
-    .back-btn:hover { background: #ff4b7a; color: white; }
 
     .reveal { opacity: 0; transform: translateY(30px); transition: 1s; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -153,7 +132,7 @@
 <body>
 
 <audio id="musica" loop>
-  <source src="TU_URL_DE_MUSICA_AQUI" type="audio/mpeg">
+  <source src="cancion.mp3" type="audio/mpeg">
 </audio>
 
 <header>
@@ -162,6 +141,7 @@
     <ul>
       <li><a href="#inicio">Inicio</a></li>
       <li><a href="#momentos">Momentos</a></li>
+      <li><a href="#tiempo">Nuestro Tiempo</a></li>
       <li><a href="#mensaje">Carta</a></li>
     </ul>
   </nav>
@@ -171,17 +151,7 @@
   <section id="inicio">
     <div class="section-inner reveal">
       <h1 class="hero-title">Para <span>ti</span>, mi negra</h1>
-      <p class="hero-subtitle">No sé cómo agradecerte todo lo que haces por mí.</p>
-      
-      <div class="counter-container">
-        <p>Tiempo compartiendo nuestra historia:</p>
-        <div id="timer" class="counter-grid">
-          <div class="counter-item"><span id="days">0</span><small>Días</small></div>
-          <div class="counter-item"><span id="hours">0</span><small>Horas</small></div>
-          <div class="counter-item"><span id="minutes">0</span><small>Min</small></div>
-          <div class="counter-item"><span id="seconds">0</span><small>Seg</small></div>
-        </div>
-      </div>
+      <p class="hero-subtitle">No sé cómo agradecerte todo lo que haces por mí.<br>Quiero que guardes esto para siempre.</p>
     </div>
   </section>
 
@@ -199,7 +169,22 @@
         </div>
         <div class="timeline-item">
           <strong>Tu apoyo incondicional</strong>
-          <p>En los días donde nada sale bien, tu mano es lo único que necesito para recordar que todo va a estar bien.</p>
+          <p>En los días donde nada sale bien, tu mano es lo único que necesito para estar bien.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tiempo">
+    <div class="section-inner reveal">
+      <div class="time-section">
+        <h2 class="section-title" style="border:none; text-align:center; padding:0;">Nuestro Tiempo Juntos</h2>
+        <p style="opacity:0.8;">Cada segundo a tu lado cuenta...</p>
+        <div id="timer" class="counter-grid">
+          <div class="counter-item"><span id="days">0</span><small>Días</small></div>
+          <div class="counter-item"><span id="hours">0</span><small>Horas</small></div>
+          <div class="counter-item"><span id="minutes">0</span><small>Minutos</small></div>
+          <div class="counter-item"><span id="seconds">0</span><small>Segundos</small></div>
         </div>
       </div>
     </div>
@@ -230,9 +215,8 @@
 </main>
 
 <script>
-  // CONFIGURA TU FECHA AQUÍ (Año, Mes - 1, Día) 
-  // Ejemplo: 14 de Febrero de 2024 -> (2024, 1, 14)
-  const fechaInicio = new Date(2024, 1, 14); 
+  // FECHA DE INICIO: 11 de Julio de 2025
+  const fechaInicio = new Date(2025, 6, 11); 
 
   function actualizarContador() {
     const ahora = new Date();
@@ -250,7 +234,6 @@
   }
   setInterval(actualizarContador, 1000);
 
-  // Revelar al hacer scroll
   const reveals = document.querySelectorAll(".reveal");
   function scrollReveal() {
     reveals.forEach(r => {
@@ -260,7 +243,6 @@
   window.addEventListener("scroll", scrollReveal);
   window.addEventListener("load", scrollReveal);
 
-  // Abrir sobre y sonar música
   const env = document.getElementById('envelope');
   const lettr = document.getElementById('letter');
   const btn = document.getElementById('backBtn');
@@ -270,7 +252,8 @@
     env.style.display = 'none';
     lettr.classList.add('active');
     btn.style.display = 'inline-block';
-    musica.play().catch(e => console.log("La música necesita un link válido"));
+    // Intenta reproducir la música
+    musica.play().catch(e => console.log("Asegúrate de tener cancion.mp3 en la carpeta"));
   });
 
   btn.addEventListener('click', () => {
